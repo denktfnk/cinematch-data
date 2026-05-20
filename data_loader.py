@@ -4,9 +4,9 @@ import zipfile
 import pandas as pd
 
 DATA_DIR = "data"
-DATASET_URL = "https://files.grouplens.org/datasets/movielens/ml-latest-small.zip"
-ZIP_PATH = os.path.join(DATA_DIR, "ml-latest-small.zip")
-EXTRACT_DIR = os.path.join(DATA_DIR, "ml-latest-small")
+DATASET_URL = "https://files.grouplens.org/datasets/movielens/cinematch_dataset.zip"
+ZIP_PATH = os.path.join(DATA_DIR, "cinematch_dataset.zip")
+EXTRACT_DIR = os.path.join(DATA_DIR, "cinematch_dataset")
 
 def download_and_extract():
     """
