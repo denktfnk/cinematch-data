@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMatch | Akıllı Film Öneri Sistemi</title>
+    <meta name="description" content="MovieLens veri seti ile kosinüs benzerliği kullanarak içerik tabanlı film önerileri sunan yapay zeka destekli sistem.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="logo-icon">🎬</div>
+                <h1>CineMatch</h1>
+            </div>
+            <p class="subtitle">İçerik Tabanlı Akıllı Film Öneri Motoru</p>
+        </header>
+
+        <main>
+            <section class="search-section glass-panel">
+                <h2>Hangi filmi beğendiniz?</h2>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Film adı girin (Örn: Toy Story)..." autocomplete="off">
+                    <button id="searchBtn" aria-label="Ara">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <ul id="searchResults" class="dropdown"></ul>
+                </div>
+            </section>
+
+            <div id="loader" class="loader hidden">
+                <div class="spinner"></div>
+                <p>Öneriler hazırlanıyor...</p>
+            </div>
+
+            <section id="resultsSection" class="results-section hidden">
+                <div class="target-movie-info glass-panel">
+                    <h3>Seçilen Film: <span id="targetMovieTitle" class="highlight"></span></h3>
+                    <div class="metric-container">
+                        <span class="metric-label">Tür Örtüşmesi (Genre Overlap):</span>
+                        <div class="metric-bar-bg">
+                            <div id="metricBar" class="metric-bar-fill"></div>
+                        </div>
+                        <span id="metricValue" class="metric-value">%0</span>
+                    </div>
+                </div>
+
+                <div class="recommendations-header">
+                    <h2>Sizin İçin Önerilenler</h2>
+                </div>
+
+                <div id="recommendationsList" class="recommendations-grid">
+                    <!-- Cards will be injected here via JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CineMatch. Yapay Zeka Destekli Öneri Sistemi.</p>
+    </footer>
+
+    <!-- Movie Details Modal -->
+    <div id="movieModal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-poster">
+                    <img id="modalPoster" src="" alt="Film Afişi">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalTitle">Film Adı</h2>
+                    <div class="modal-score">
+                        <span class="star">⭐</span>
+                        <span id="modalScore">0.0</span> <span class="score-max">/ 10 (TMDB)</span>
+                    </div>
+                    <div class="modal-overview">
+                        <h3>Özet</h3>
+                        <p id="modalOverview">Yükleniyor...</p>
+                    </div>
+                    <div class="modal-providers">
+                        <h3>Nereden İzleyebilirim? (Türkiye)</h3>
+                        <div id="modalPlatforms" class="platforms-list">
+                            <!-- Platform logos will be injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
